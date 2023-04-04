@@ -1,4 +1,5 @@
 from django.db import models
+from project.models import Project
 
 
 class Task(models.Model):
@@ -12,6 +13,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     completed_at = models.DateTimeField(null=True, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='tasks')
 
 
     def __str__(self):
