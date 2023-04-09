@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Task_Manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Task_Manager',
+        'NAME': 'Task-Manager',
         'USER': 'postgres',
         'PASSWORD': '20041014',
         'HOST': 'localhost',
@@ -134,8 +134,9 @@ AUTH_USER_MODEL = 'authentication.User'
 
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'Task_Manager.exceptions.core_exception_handler',
-    'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated']
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'EXCEPTION_HANDLER': 'Task_Manager.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error'
 }

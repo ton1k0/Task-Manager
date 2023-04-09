@@ -1,4 +1,5 @@
 from .models import User
+from django.contrib.auth import authenticate
 from rest_framework import serializers
 
 
@@ -12,17 +13,32 @@ class RegistrationSerializer(serializers.ModelSerializer):
             'password': {'write_only': True},
         }
 
-    def save(self):
-        user = User(
-            email=self.validated_data['email'],
-            first_name=self.validated_data['first_name'],
-            surname=self.validated_data['surname'],
-            is_staff=self.validated_data['is_staff'],
-        )
-        password = self.validated_data['password']
-        password2 = self.validated_data['password2']
+    def validate(self, data):
+        password = data.get('password')
+        password2 = data.pop('password2')
         if password != password2:
             raise serializers.ValidationError({'password': 'Passwords must match.'})
+        return data
+
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = User(**validated_data)
         user.set_password(password)
         user.save()
         return user
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        email = data.get('email', None)
+        password = data.get('password', None)
+        if email is None or password is None:
+            raise serializers.ValidationError('Must include email and password')
+        user = authenticate(request=self.context.get('request'), email=email, password=password)
+        if user is None:
+            raise serializers.ValidationError('Invalid credentials')
+        data['user'] = user
+        return data
