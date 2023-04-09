@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from company.models import Company
 
 
 class UserManager(BaseUserManager):
@@ -23,6 +24,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
     is_staff = models.BooleanField(default=False)
+    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True)
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'surname']
