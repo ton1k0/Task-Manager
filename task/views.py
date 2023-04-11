@@ -9,10 +9,10 @@ class TaskCreateView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+
 class TaskUpdateView(generics.RetrieveUpdateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -25,7 +25,6 @@ class TaskUpdateView(generics.RetrieveUpdateAPIView):
 class TaskDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()

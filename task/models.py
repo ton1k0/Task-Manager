@@ -1,4 +1,5 @@
 from django.db import models
+from authentication.models import User
 from project.models import Project
 
 
@@ -8,8 +9,7 @@ class Task(models.Model):
     status = models.CharField(max_length=20, default='New') #only 4 options ("new", "in progress", "completed", "postponed")
     priority = models.CharField(max_length=20, default='Low') #only 3 options ("high", "medium", "low")
     due_date = models.DateField()
-    # dont work until i create model User
-    #assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assigned_tasks')
+    assigned_to = models.ManyToManyField(User, related_name='assigned_tasks')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     completed_at = models.DateTimeField(null=True, blank=True)
