@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'task',
     'authentication',
     'project',
-    'company'
+    'company',
+    'profiles'
 ]
 
 MIDDLEWARE = [
