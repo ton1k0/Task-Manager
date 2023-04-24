@@ -14,13 +14,14 @@ class ProfileCreateView(generics.CreateAPIView):
 
 
 class ProfileUpdateView(generics.UpdateAPIView):
-    queryset = Profile.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
 
     def put(self, request, *args, **kwargs):
-        instance = self.get_object()
+        logged_in_user = self.request.user
+        profile = Profile.objects.get(user_id=logged_in_user.id)
+        instance = profile
         serializer = self.get_serializer(instance, data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
-        return Response({'message': 'Профиль успешно изменен.'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Профиль успешно изменен.', 'profile': serializer.data}, status=status.HTTP_200_OK)
