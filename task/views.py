@@ -3,16 +3,19 @@ from rest_framework import generics
 from .models import Task
 from rest_framework import status
 from .serializers import TaskSerializer
+from project.permissions.admin import IsAdmin
 
 
 class TaskCreateView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsAdmin]
 
 
 class TaskUpdateView(generics.RetrieveUpdateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsAdmin]
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -25,6 +28,7 @@ class TaskUpdateView(generics.RetrieveUpdateAPIView):
 class TaskDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsAdmin]
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()

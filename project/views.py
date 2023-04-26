@@ -3,18 +3,19 @@ from rest_framework import generics, status
 from .models import Project
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from company.permissions.owners import IsOwner
 
 
 class ProjectCreateView(generics.ListCreateAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwner]
 
 
 class ProjectUpdateView(generics.RetrieveUpdateAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwner]
 
     def put(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -27,7 +28,7 @@ class ProjectUpdateView(generics.RetrieveUpdateAPIView):
 class ProjectDeleteView(generics.DestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwner]
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
