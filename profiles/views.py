@@ -1,20 +1,19 @@
-from django.shortcuts import render
 from rest_framework import generics, status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from company.permissions.staff import IsStaff
+from company.permissions.owners import IsOwner
 from .models import Profile
 from .serializers import ProfileSerializer
 
 
 class ProfileCreateView(generics.CreateAPIView):
     queryset = Profile.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsStaff, IsOwner]
     serializer_class = ProfileSerializer
 
 
 class ProfileUpdateView(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsStaff, IsOwner]
     serializer_class = ProfileSerializer
 
     def put(self, request, *args, **kwargs):
