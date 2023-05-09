@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'authentication',
     'project',
     'company',
-    'profiles'
+    'profiles',
+    'chat',
+    'channels',
+
 ]
 
 MIDDLEWARE = [
@@ -140,4 +143,13 @@ REST_FRAMEWORK = {
     ],
     'EXCEPTION_HANDLER': 'Task_Manager.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error'
+}
+
+ASGI_APPLICATION = 'chat.routing.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
 }
