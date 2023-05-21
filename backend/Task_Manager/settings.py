@@ -76,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Task_Manager.wsgi.application'
+ASGI_APPLICATION = 'Task_Manager.asgi.application'
 
 
 # Database
@@ -145,7 +146,6 @@ REST_FRAMEWORK = {
     'NON_FIELD_ERRORS_KEY': 'error'
 }
 
-ASGI_APPLICATION = 'chat.routing.application'
 
 
 CHANNEL_LAYERS = {
