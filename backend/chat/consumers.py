@@ -23,9 +23,8 @@ class GeneralChatConsumer(AsyncWebsocketConsumer):
         return chat
 
     async def connect(self):
-        user_id = self.scope["session"]["_auth_user_id"]
-        self.group_name = "{}".format(user_id)
-        # Join room group
+        self.chat_id = self.scope['url_route']['kwargs']['chat_id']
+        self.chat_group_name = f'chat_{self.chat_id}'
 
         headers = self.scope.get('headers', [])
         token_header = [header for header in headers if header[0].decode('utf-8').lower() == 'authorization']
@@ -209,6 +208,8 @@ class PersonalChatConsumer(AsyncWebsocketConsumer):
 
     async def personal_chat_message(self, event):
         message = event['message']
+        author_id = event['author_id']
+        created_at = event['created_at']
 
         await self.send(text_data=json.dumps({
             'message': message,
