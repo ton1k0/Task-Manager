@@ -1,8 +1,25 @@
 from rest_framework import serializers
-from .models import Chat
+from .models import GeneralChat, PersonalChat, GeneralMessage, PersonalMessage
 
-
-class ChatSerializer(serializers.ModelSerializer):
+class GeneralChatSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Chat
+        model = GeneralChat
         fields = '__all__'
+
+
+class GeneralMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GeneralMessage
+        fields = '__all__'
+
+
+class PersonalChatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalChat
+        fields = '__all__'
+
+
+class PersonalMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalMessage
+        fields = "__all__"
