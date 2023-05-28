@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "exact": "^0.8.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.11.2",
+    "style-components": "^0.1.0"
+  }
+}
