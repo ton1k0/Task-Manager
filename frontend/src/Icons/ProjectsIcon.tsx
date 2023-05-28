@@ -23,13 +23,11 @@ export function ProjectsIcon() {
                     width='50px'
                     variant='ghost'
                     icon={<BsFolder/>}>
-                    <label htmlFor="nav-toggle" className="navToggle"></label>
                 </IconButton>
             </Tab>
             <TabPanel>
                     <Flex
                         marginLeft={"75px"}>
-                        <h2 className="logo">Active</h2>
                                 <Box
                                     maxW='sm'
                                      maxH='sm'
