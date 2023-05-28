@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import {ChakraProvider} from "@chakra-ui/react";
 
@@ -7,7 +7,7 @@ function App() {
   <ChakraProvider>
     <Router>
         <Routes>
-          <Route exact path="/" element={<MainPage />}>
+          <Route  path="/" element={<MainPage />}>
           </Route>
         </Routes>
     </Router>
