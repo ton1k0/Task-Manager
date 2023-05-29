@@ -13,12 +13,12 @@ function Sidebar() {
                 <Flex flexDirection='column' gap='4' alignItems='center'>
                     <Avatar size='md' borderRadius='20%' name='Dan Abrahmov' src='https://bit.ly/dan-abramov'/>
                     <Link to="/"><SidebarIcon icon={<AiOutlineHome/>}/></Link>
-                    <Link to="/Notify"><SidebarIcon icon={<BsBell/>}/></Link>
-                    <Link to="/Chat"><SidebarIcon icon={<BsChat/>}/></Link>
-                    <Link to="/Task"><SidebarIcon icon={<BsFolder2Open/>}/></Link>
+                    <Link to="/notify"><SidebarIcon icon={<BsBell/>}/></Link>
+                    <Link to="/chat"><SidebarIcon icon={<BsChat/>}/></Link>
+                    <Link to="/task"><SidebarIcon icon={<BsFolder2Open/>}/></Link>
                 </Flex>
                 <Flex flexDirection='column' gap='4'>
-                    <Link to="/Options"><SidebarIcon icon={<BsGear/>}/></Link>
+                    <Link to="/options"><SidebarIcon icon={<BsGear/>}/></Link>
                     <SidebarIcon icon={<BsBoxArrowRight/>}/>
                 </Flex>
             </Flex>

@@ -15,10 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Sidebar/>}/>
             <Route index element={<Home/>}/>
-            <Route path="/Notify" element={<Notify/>}/>
-            <Route path="/Chat" element={<Chat/>}/>
-            <Route path="/Task" element={<Task/>}/>
-            <Route path="/Options" element={<Options/>}/>
+            <Route path="/notify" element={<Notify/>}/>
+            <Route path="/chat" element={<Chat/>}/>
+            <Route path="/task" element={<Task/>}/>
+            <Route path="/options" element={<Options/>}/>
         </Routes>
     </Router>
   </ChakraProvider>
